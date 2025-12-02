@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>N7 · Interfaz de misión</title>
+  <link rel="stylesheet" href="estils.css" />
+</head>
+<body id="pagina-interaccio">
+  <header class="navbar">
+    <nav class="nav">
+      <a href="index.html" class="logo">N7</a>
+
+      <!-- Toggle móvil con checkbox oculto -->
+      <input type="checkbox" id="menu-toggle" class="toggle-hidden" />
+      <label for="menu-toggle" class="hamburger" aria-label="Abrir/Cerrar menú">
+        <span></span><span></span><span></span>
+      </label>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Registro</a></li>
+        <li><a href="interaccio.html" class="active">Interfaz</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Panel de control · Normandía SR-2</h1>
+
+    <!-- Pestañas con radio -->
+    <section class="tabs">
+      <div class="tab-controls">
+        <input type="radio" id="tab1" name="tab" class="tab-hidden" checked />
+        <label for="tab1" class="tab-btn">Estado de misión</label>
+
+        <input type="radio" id="tab2" name="tab" class="tab-hidden" />
+        <label for="tab2" class="tab-btn">Tripulación</label>
+
+        <input type="radio" id="tab3" name="tab" class="tab-hidden" />
+        <label for="tab3" class="tab-btn">Arsenal</label>
+      </div>
+
+      <div class="tab-contents">
+        <article class="content content-1">
+          <h2>Informe de misión</h2>
+          <p>Operaciones N7 activas en el sector Terminus. Preparar escuadra para despliegue inmediato.</p>
+        </article>
+        <article class="content content-2">
+          <h2>Tripulación</h2>
+          <p>Comandante Shepard, Garrus Vakarian, Tali'Zorah, Liara T'Soni, y más miembros de la Normandía.</p>
+        </article>
+        <article class="content content-3">
+          <h2>Arsenal</h2>
+          <p>Inventario: rifles de asalto M-8 Avenger, pistolas M-6 Carnifex, armadura táctica N7.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Flip card controlada por checkbox -->
+    <section class="flip-card-section">
+      <h2>Datos clasificados (checkbox)</h2>
+      <input type="checkbox" id="flip" class="toggle-hidden" />
+      <label for="flip" class="flip-btn">Acceder a información</label>
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h3>Acceso restringido</h3>
+            <p>Solo personal N7 autorizado.</p>
+          </div>
+          <div class="flip-card-back">
+            <h3>Informe secreto</h3>
+            <p>Operaciones especiales en curso. Contacto con Spectres confirmado.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Panel de opciones -->
+    <section class="panel-options">
+      <h2>Panel de escuadra (radio)</h2>
+      <div class="options">
+        <input type="radio" id="op1" name="panel" class="tab-hidden" checked />
+        <label for="op1" class="opt-btn">Escuadra Alfa</label>
+
+        <input type="radio" id="op2" name="panel" class="tab-hidden" />
+        <label for="op2" class="opt-btn">Escuadra Beta</label>
+
+        <input type="radio" id="op3" name="panel" class="tab-hidden" />
+        <label for="op3" class="opt-btn">Escuadra Gamma</label>
+
+        <div class="opt-content">
+          <div class="opt opt-a">Escuadra Alfa: Shepard, Garrus, Liara.</div>
+          <div class="opt opt-b">Escuadra Beta: Tali, Miranda, Jacob.</div>
+          <div class="opt opt-c">Escuadra Gamma: Grunt, Mordin, Jack.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>&copy; Normandía SR-2 · Programa N7</small>
+  </footer>
+
+  <!-- Reglas :has() para mostrar pestañas activas -->
+  <style>
+    #pagina-interaccio .content { display: none; }
+    #pagina-interaccio:has(#tab1:checked) .content-1 { display: block; }
+    #pagina-interaccio:has(#tab2:checked) .content-2 { display: block; }
+    #pagina-interaccio:has(#tab3:checked) .content-3 { display: block; }
+
+    .options { display: grid; gap: 0.5rem; }
+    .opt-content { position: relative; min-height: 3rem; padding: 1rem; border: 1px solid var(--border); border-radius: 0.5rem; }
+    .opt { display: none; }
+    #op1:checked ~ .opt-content .opt-a { display: block; }
+    #op2:checked ~ .opt-content .opt-b { display: block; }
+    #op3:checked ~ .opt-content .opt-c { display: block; }
+  </style>
+</body>
+</html>

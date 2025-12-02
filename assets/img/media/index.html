@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>N7 · Registro de tripulación</title>
+  <link rel="stylesheet" href="estils.css" />
+</head>
+<body id="pagina-formulari">
+  <header class="navbar">
+    <nav class="nav">
+      <a href="index.html" class="logo">N7</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Registro</a></li>
+        <li><a href="interaccio.html">Interfaz</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Formulario de ingreso · Programa N7</h1>
+    <p class="intro">Completa tu perfil para unirte a la tripulación de la Normandía.</p>
+
+    <form class="form" action="#" method="post" novalidate>
+      <div class="form-group">
+        <label for="nom">Nombre completo</label>
+        <input id="nom" name="nom" type="text" required
+               placeholder="Comandante Shepard"
+               pattern="^[A-Za-zÀ-ÿ]+(?:\s+[A-Za-zÀ-ÿ]+){1,}$"
+               title="Introduce nombre y apellido." />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Correo de la Alianza</label>
+        <input id="email" name="email" type="email" required placeholder="shepard@n7systems.org" />
+      </div>
+
+      <div class="form-group">
+        <label for="telefon">Código de comunicación</label>
+        <input id="telefon" name="telefon" type="tel" required
+               placeholder="600123123"
+               pattern="^\d{9}$"
+               title="Introduce 9 dígitos." />
+      </div>
+
+      <div class="form-group">
+        <label for="edat">Edad</label>
+        <input id="edat" name="edat" type="number" min="18" max="120" step="1" placeholder="30" />
+      </div>
+
+      <div class="form-group">
+        <label for="naixement">Fecha de nacimiento</label>
+        <input id="naixement" name="naixement" type="date" />
+      </div>
+
+      <div class="form-group">
+        <label for="franja">Horario de patrulla</label>
+        <input id="franja" name="franja" type="time" />
+      </div>
+
+      <div class="form-group">
+        <label for="color">Color de escuadra</label>
+        <input id="color" name="color" type="color" value="#d32f2f" />
+      </div>
+
+      <div class="form-group">
+        <label for="range">Nivel de entrenamiento (0-10)</label>
+        <input id="range" name="range" type="range" min="0" max="10" step="1" value="5" />
+      </div>
+
+      <fieldset class="form-group">
+        <legend>Especialidades</legend>
+        <label><input type="checkbox" name="aficions" value="biotico" /> Biótico</label>
+        <label><input type="checkbox" name="aficions" value="ingenieria" /> Ingeniería</label>
+        <label><input type="checkbox" name="aficions" value="armas" /> Armas pesadas</label>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <legend>Rango N7</legend>
+        <label><input type="radio" name="nivell" value="recluta" required /> Recluta</label>
+        <label><input type="radio" name="nivell" value="oficial" /> Oficial</label>
+        <label><input type="radio" name="nivell" value="comandante" /> Comandante</label>
+      </fieldset>
+
+      <div class="form-group">
+        <label for="pais">Sector asignado</label>
+        <select id="pais" name="pais" required>
+          <option value="">— Selecciona —</option>
+          <option value="terra">Tierra</option>
+          <option value="citadel">Ciudadela</option>
+          <option value="omega">Omega</option>
+          <option value="ilum">Illium</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="comentaris">Observaciones</label>
+        <textarea id="comentaris" name="comentaris" rows="4" placeholder="Escribe tu motivación para unirte al programa N7..."></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn primary">Enviar solicitud</button>
+        <button type="reset" class="btn">Reiniciar</button>
+      </div>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <small>&copy; Programa N7 · Alianza de Sistemas</small>
+  </footer>
+</body>
+</html>
