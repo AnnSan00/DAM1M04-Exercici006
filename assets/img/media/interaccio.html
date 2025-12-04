@@ -102,19 +102,5 @@
     <small>&copy; Normandía SR-2 · Programa N7</small>
   </footer>
 
-  <!-- Reglas :has() para mostrar pestañas activas -->
-  <style>
-    #pagina-interaccio .content { display: none; }
-    #pagina-interaccio:has(#tab1:checked) .content-1 { display: block; }
-    #pagina-interaccio:has(#tab2:checked) .content-2 { display: block; }
-    #pagina-interaccio:has(#tab3:checked) .content-3 { display: block; }
-
-    .options { display: grid; gap: 0.5rem; }
-    .opt-content { position: relative; min-height: 3rem; padding: 1rem; border: 1px solid var(--border); border-radius: 0.5rem; }
-    .opt { display: none; }
-    #op1:checked ~ .opt-content .opt-a { display: block; }
-    #op2:checked ~ .opt-content .opt-b { display: block; }
-    #op3:checked ~ .opt-content .opt-c { display: block; }
-  </style>
 </body>
 </html>
