@@ -1,6 +1,6 @@
 /* =====================================================
-   CSS EXPLICADO COMO PARA UN ESTUDIANTE
-   Comentarios simples para entender qué hace cada parte
+   CSS EXPLICADO PARA ESTUDIANTES
+   Maquetación de formularios + interactividad solo con HTML+CSS
    ===================================================== */
 
 /* --- Importamos la fuente que usará el texto de la web --- */
@@ -8,18 +8,18 @@
 
 /* --- Variables con colores, bordes y efectos para usar en todo el proyecto --- */
 :root{
-  --bg:#0b0b0f;              /* Fondo principal oscuro */
-  --card:#1c1c24;            /* Fondo de tarjetas/secciones */
-  --text:#fff;               /* Texto general */
-  --muted:#9e9e9e;           /* Texto apagado/gris */
-  --primary:#d32f2f;         /* Color rojo principal */
-  --accent:#fff;             /* Color blanco para resaltar */
-  --danger:#8b0000;          /* Rojo de error */
-  --success:#228b22;         /* Verde de éxito */
-  --border:#3a3a3a;          /* Color de bordes */
-  --shadow:0 8px 20px rgba(0,0,0,.7); /* Sombra general */
-  --radius:8px;              /* Radio de esquinas redondeadas */
-  --trans:250ms ease-in-out; /* Velocidad de animaciones */
+  --bg:#0b0b0f;              
+  --card:#1c1c24;            
+  --text:#fff;               
+  --muted:#9e9e9e;           
+  --primary:#d32f2f;         
+  --accent:#fff;             
+  --danger:#8b0000;          
+  --success:#228b22;         
+  --border:#3a3a3a;          
+  --shadow:0 8px 20px rgba(0,0,0,.7); 
+  --radius:8px;              
+  --trans:250ms ease-in-out; 
 }
 
 /* --- Ajustes básicos del documento --- */
@@ -30,21 +30,21 @@ body{
   margin:0;
   font-family:'Orbitron',sans-serif;
   color:var(--text);
-  background:linear-gradient(180deg,#0b0b0f,#1c1c24); /* Degradado oscuro */
+  background:linear-gradient(180deg,#0b0b0f,#1c1c24);
 }
 
-/* --- Un contenedor centrado para el contenido --- */
+/* --- Contenedor centrado --- */
 .container{max-width:900px;margin:2rem auto;padding:0 1rem;}
 
-/* --- Títulos y textos introductorios --- */
+/* --- Títulos y textos --- */
 .intro{color:var(--muted);} 
 h1{
   font-size:clamp(1.6rem,2.5vw,2.1rem);
   color:var(--accent);
-  text-shadow:2px 2px 6px var(--primary); /* Resalta el título */
+  text-shadow:2px 2px 6px var(--primary);
 }
 
-/* --- Estilo de secciones y formularios en general --- */
+/* --- Secciones y formularios --- */
 section,.form{
   background:var(--card);
   border:2px solid var(--border);
@@ -57,7 +57,7 @@ section,.form{
    NAVBAR - MENÚ SUPERIOR
    ========================== */
 .navbar{
-  position:sticky; /* El menú queda fijo arriba */
+  position:sticky;
   top:0;
   background:rgba(15,15,20,.95);
   z-index:50;
@@ -91,28 +91,32 @@ section,.form{
 .nav-links a:hover{color:var(--accent);background:rgba(211,47,47,.2);} 
 .nav-links a.active{color:var(--accent);background:rgba(211,47,47,.4);} 
 
-/* --- Botón hamburguesa para móviles --- */
+/* --- Botón hamburguesa --- */
 .toggle-hidden{position:absolute;opacity:0;pointer-events:none;}
-.hamburger{
-  display:none; /* Se muestra solo en móviles */
-  width:34px;height:28px;
-  gap:5px;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;flex-direction:column;
+.hamburger {
+  display: none; /* Oculto en escritorio */
+  width:34px;
+  height:28px;
+  gap:5px;
+  cursor:pointer;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
 }
+
 .hamburger span{
   width:100%;height:3px;background:var(--accent);
   border-radius:2px;
   transition:var(--trans);
 }
 
-/* ==========================
-   MENÚ RESPONSIVE (cuando la pantalla es pequeña)
-   ========================== */
+/* --- Menú responsive --- */
 @media(max-width:768px){
-  .hamburger{display:flex;} /* Ahora sí aparece */
+  .hamburger {
+    display:flex; /* Solo aparece en móviles */
+  }
 
-  /* El menú se convierte en una tarjeta desplegable */
-  .nav-links{
+  .nav-links {
     position:absolute;
     right:1rem;
     top:56px;
@@ -130,18 +134,17 @@ section,.form{
     transition:var(--trans);
   }
 
-  /* Mostrar menú al pulsar el checkbox */
-  #menu-toggle:checked+.hamburger+.nav-links{
+  #menu-toggle:checked + .hamburger + .nav-links {
     opacity:1;
     transform:translateY(0);
     pointer-events:auto;
   }
 
-  /* Animación del ícono cambiando a X */
-  #menu-toggle:checked+.hamburger span:nth-child(1){transform:translateY(8px) rotate(45deg);} 
-  #menu-toggle:checked+.hamburger span:nth-child(2){opacity:0;} 
-  #menu-toggle:checked+.hamburger span:nth-child(3){transform:translateY(-8px) rotate(-45deg);} 
+  #menu-toggle:checked + .hamburger span:nth-child(1) { transform:translateY(8px) rotate(45deg); } 
+  #menu-toggle:checked + .hamburger span:nth-child(2) { opacity:0; } 
+  #menu-toggle:checked + .hamburger span:nth-child(3) { transform:translateY(-8px) rotate(-45deg); } 
 }
+
 
 /* ==========================
    FORMULARIOS
@@ -161,11 +164,52 @@ input,select,textarea{
   outline:none;
   transition:var(--trans);
 }
-
-/* Efectos al escribir o validar */
 input:focus,select:focus,textarea:focus{border-color:var(--primary);box-shadow:0 0 10px var(--primary);} 
-input:required:invalid,select:required:invalid{border-color:var(--danger);} 
-input:required:valid,select:required:valid{border-color:var(--success);} 
+input:required:invalid,select:required:invalid,textarea:required:invalid{border-color:var(--danger);} 
+input:required:valid,select:required:valid,textarea:required:valid{border-color:var(--success);} 
+
+/* ==========================
+   CHECKBOX Y RADIO PERSONALIZADOS
+   ========================== */
+input[type=checkbox], input[type=radio]{
+  appearance:none;
+  -webkit-appearance:none;
+  width:20px;
+  height:20px;
+  border:2px solid var(--border);
+  border-radius:4px;
+  background:var(--bg);
+  cursor:pointer;
+  position:relative;
+  transition:var(--trans);
+}
+input[type=checkbox]::before{
+  content:"";
+  position:absolute;
+  top:2px;
+  left:6px;
+  width:5px;
+  height:10px;
+  border:solid var(--accent);
+  border-width:0 2px 2px 0;
+  transform:rotate(45deg) scale(0);
+  transition:var(--trans);
+}
+input[type=checkbox]:checked::before{transform:rotate(45deg) scale(1);}
+input[type=radio]{border-radius:50%;}
+input[type=radio]::before{
+  content:"";
+  position:absolute;
+  top:4px;
+  left:4px;
+  width:8px;
+  height:8px;
+  background:var(--accent);
+  border-radius:50%;
+  transform:scale(0);
+  transition:var(--trans);
+}
+input[type=radio]:checked::before{transform:scale(1);}
 
 /* ==========================
    BOTONES
@@ -188,7 +232,29 @@ input:required:valid,select:required:valid{border-color:var(--success);}
   box-shadow:0 0 15px var(--primary);
 }
 
-/* --- Pie de página --- */
+/* Submit y Reset */
+input[type=submit], input[type=reset]{
+  background:var(--primary);
+  border:2px solid var(--accent);
+  color:var(--accent);
+  padding:.6rem 1rem;
+  border-radius:4px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  cursor:pointer;
+  transition:var(--trans);
+  margin-right:.5rem;
+}
+input[type=submit]:hover, input[type=reset]:hover{
+  background:var(--accent);
+  color:var(--primary);
+  transform:scale(1.05);
+  box-shadow:0 0 15px var(--primary);
+}
+
+/* ==========================
+   PIE DE PÁGINA
+   ========================== */
 .footer{
   display:flex;
   justify-content:center;
@@ -213,27 +279,35 @@ input:required:valid,select:required:valid{border-color:var(--success);}
 /* ==========================
    PÁGINA DE INTERACCIÓN (TABS, CARTA GIRATORIA, OPCIONES)
    ========================== */
-#pagina-interaccio .container{
-  max-width:1100px;
-  margin:2rem auto;
-  padding:0 1rem;
-  display:grid;
-  grid-template-columns:1fr;
-  gap:2rem;
-}
-
-/* Distribución cuando la pantalla es grande */
+/* Layout con flexbox en escritorio */
 @media(min-width:1100px){
   #pagina-interaccio .container{
-    grid-template-columns:1.2fr .9fr .9fr;
-    align-items:start;
+    display:flex;
+    flex-wrap:wrap;       /* Permite que los elementos bajen a otra fila */
+    gap:2rem;
   }
-  #pagina-interaccio .tabs{grid-column:1;} 
-  #pagina-interaccio .flip-card-section{grid-column:2;} 
-  #pagina-interaccio .panel-options{grid-column:3;} 
+
+  /* El título ocupa toda la fila */
+  #pagina-interaccio h1{
+    flex:1 1 100%;
+    text-align:center;
+    margin-bottom:1rem;
+  }
+
+  /* Tabs y flip-card lado a lado */
+  #pagina-interaccio .tabs,
+  #pagina-interaccio .flip-card-section{
+    flex:1 1 45%;         /* Cada uno ocupa aprox. la mitad */
+  }
+
+  /* Panel de opciones debajo ocupando todo el ancho */
+  #pagina-interaccio .panel-options{
+    flex:1 1 100%;
+  }
 }
 
-/* -------- TABS (pestañas) -------- */
+
+/* -------- TABS -------- */
 #pagina-interaccio .tab-controls{
   display:flex;
   flex-direction:column;
@@ -243,7 +317,7 @@ input:required:valid,select:required:valid{border-color:var(--success);}
   background:#0b0b0f;
   border:2px solid var(--border);
   color:var(--accent);
-  padding:.6rem 1_rem;
+  padding:.6rem 1rem;
   border-radius:var(--radius);
   cursor:pointer;
   transition:var(--trans);
@@ -268,26 +342,23 @@ input:required:valid,select:required:valid{border-color:var(--success);}
   display:block;
 }
 
-/* -------- Tarjeta giratoria (Flip card) -------- */
+/* -------- Tarjeta giratoria -------- */
 #pagina-interaccio .flip-card-section{display:grid;gap:1rem;}
 #pagina-interaccio .flip-card{
   max-width:360px;
   width:100%;
-  perspective:1000px; /* Permite el efecto 3D */
+  perspective:1000px;
 }
 #pagina-interaccio .flip-card-inner{
   position:relative;
   width:100%;
   min-height:180px;
-  transform-style:preserve-3d; /* Habilita 3D */
+  transform-style:preserve-3d;
   transition:transform 600ms ease;
 }
-
-/* Giro al activar */
 #pagina-interaccio #flip:checked~.flip-card .flip-card-inner{
   transform:rotateY(180deg);
 }
-
 #pagina-interaccio .flip-card-front,
 #pagina-interaccio .flip-card-back{
   position:absolute;
@@ -296,7 +367,7 @@ input:required:valid,select:required:valid{border-color:var(--success);}
   background:var(--card);
   border:2px solid var(--border);
   border-radius:var(--radius);
-  backface-visibility:hidden; /* Oculta el reverso */
+  backface-visibility:hidden;
 }
 #pagina-interaccio .flip-card-back{
   transform:rotateY(180deg);
@@ -331,4 +402,3 @@ input:required:valid,select:required:valid{border-color:var(--success);}
 #pagina-interaccio #op3:checked~.opt-content .opt-c{
   display:block;
 }
-
