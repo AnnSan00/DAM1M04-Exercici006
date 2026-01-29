@@ -10,6 +10,12 @@
   <header class="navbar">
     <nav class="nav">
       <a href="index.html" class="logo">N7</a>
+      <!-- Toggle móvil con checkbox oculto -->
+      <input type="checkbox" id="menu-toggle" class="toggle-hidden" />
+      <label for="menu-toggle" class="hamburger" aria-label="Abrir/Cerrar menú">
+        <span></span><span></span><span></span>
+      </label>
+      
       <ul class="nav-links">
         <li><a href="index.html" class="active">Registro</a></li>
         <li><a href="interaccio.html">Interfaz</a></li>
@@ -32,7 +38,7 @@
 
       <div class="form-group">
         <label for="email">Correo de la Alianza</label>
-        
+
         <input id="email" name="email" type="email" required placeholder="shepard@n7systems.org" />
       </div>
 
@@ -78,7 +84,7 @@
 
       <fieldset class="form-group">
         <legend>Rango N7</legend>
-        <label><input type="radio" name="nivell" value="recluta" required /> Recluta</label>
+        <label><input type="radio" name="nivell" value="recluta" /> Recluta</label>
         <label><input type="radio" name="nivell" value="oficial" /> Oficial</label>
         <label><input type="radio" name="nivell" value="comandante" /> Comandante</label>
       </fieldset>
